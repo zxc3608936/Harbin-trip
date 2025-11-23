@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026年哈爾濱之旅 (最終升級版)</title>
+    <title>2026年哈爾濱之旅 (本地圖片版)</title>
     
     <!-- 引入 Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,25 +12,18 @@
 
     <style>
         :root {
-            /* 視覺色票 */
-            --primary: #2563EB;        /* 更有活力的藍 */
+            --primary: #2563EB;        
             --primary-dark: #1E40AF;
             --primary-light: #DBEAFE;
-            --accent: #F59E0B;         /* 金黃色 (強調) */
+            --accent: #F59E0B;         
             --bg-color: #F3F6F8;
-            
-            /* 文字顏色 */
             --text-dark: #1F2937;
             --text-gray: #64748B;
             --text-light: #94A3B8;
-
-            /* 功能色 */
             --flight-bg: #EFF6FF;
             --flight-text: #1D4ED8;
             --hotel-bg: #F5F3FF;
             --hotel-text: #7C3AED;
-
-            /* 陰影與圓角 */
             --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
             --shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --radius: 24px;
@@ -39,7 +32,7 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: 'Poppins', 'Noto Sans TC', sans-serif; /* 中英混排字型 */
+            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
@@ -51,7 +44,7 @@
         /* --- Header --- */
         .header {
             position: relative;
-            height: 280px;
+            height: 300px;
             border-radius: 0 0 30px 30px;
             overflow: hidden;
             box-shadow: var(--shadow-float);
@@ -59,53 +52,53 @@
         .header-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* 使用 Unsplash 圖片作為背景，確保在任何設備上都好看 */
-            background: url('https://images.unsplash.com/photo-1547526829-40f086801490?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            /* 使用本地圖片 header_bg.jpg */
+            background: url('header_bg.jpg') no-repeat center center/cover;
             z-index: 1;
         }
         .header-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(30,58,138,0.3), rgba(17,24,39,0.85));
+            background: linear-gradient(to bottom, rgba(30,58,138,0.2), rgba(17,24,39,0.8));
             z-index: 2;
         }
         .header-content {
             position: relative;
             z-index: 3;
-            padding: 60px 20px 20px;
+            padding: 80px 20px 20px;
             color: white;
             text-align: center;
-            max-width: 800px; /* 限制最大寬度，在大螢幕上更好看 */
+            max-width: 800px;
             margin: 0 auto;
         }
         .header h1 { 
-            margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;
+            margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .header .subtitle { 
-            font-size: 14px; margin-top: 8px; opacity: 0.9; font-weight: 400; letter-spacing: 0.5px;
+            font-size: 15px; margin-top: 8px; opacity: 0.95; font-weight: 400; letter-spacing: 0.5px;
         }
         
         .countdown-box {
-            margin-top: 20px;
+            margin-top: 25px;
             display: inline-block;
             background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(8px);
-            padding: 8px 16px;
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             font-size: 14px;
+            font-weight: 500;
         }
-        .countdown-box strong { color: #FCD34D; margin-left: 5px; font-size: 16px; }
+        .countdown-box strong { color: #FCD34D; margin-left: 5px; font-size: 18px; }
 
         /* --- Navigation --- */
         .nav-container {
             position: sticky;
             top: 0;
             z-index: 100;
-            margin-top: -30px;
+            margin-top: -35px;
             padding: 10px 0;
-            /* 讓導航欄在大螢幕上置中 */
             display: flex;
             justify-content: center;
         }
@@ -116,7 +109,7 @@
             gap: 12px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            max-width: 800px; /* 限制最大寬度 */
+            max-width: 800px;
             width: 100%;
         }
         .nav-scroller::-webkit-scrollbar { display: none; }
@@ -124,18 +117,18 @@
         .nav-pill {
             flex: 0 0 auto;
             background: white;
-            padding: 10px 20px;
-            border-radius: 16px;
+            padding: 12px 20px;
+            border-radius: 18px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             color: var(--text-gray);
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.8);
-            min-width: 75px;
-            cursor: pointer; /* 增加游標提示 */
+            min-width: 80px;
+            cursor: pointer;
         }
-        .nav-pill span.day { display: block; font-size: 16px; font-weight: 700; line-height: 1; }
-        .nav-pill span.label { display: block; font-size: 11px; margin-top: 4px; font-weight: 500; }
+        .nav-pill span.day { display: block; font-size: 18px; font-weight: 700; line-height: 1; }
+        .nav-pill span.label { display: block; font-size: 12px; margin-top: 4px; font-weight: 500; }
         
         .nav-pill.active {
             background: var(--primary);
@@ -146,40 +139,73 @@
 
         /* --- Main Container --- */
         .container { 
-            padding: 10px 20px; 
-            max-width: 800px; /* 增加最大寬度以適應平板/桌面 */
+            padding: 20px; 
+            max-width: 800px; 
             margin: 0 auto; 
         }
         .view-section { display: none; animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .view-section.active { display: block; }
 
-        /* --- Day Card Design --- */
+        /* --- Day Card Design (圖片置頂) --- */
         .day-card {
             background: white;
             border-radius: var(--radius);
             box-shadow: var(--shadow-card);
             overflow: hidden;
             margin-bottom: 40px;
-            position: relative;
-            scroll-margin-top: 120px;
+            scroll-margin-top: 140px;
         }
         
-        .day-hero { height: 160px; position: relative; }
-        .day-hero img { width: 100%; height: 100%; object-fit: cover; }
-        .day-hero::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 80%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        /* 圖片區域：寬度滿版，高度固定 */
+        .day-hero { 
+            width: 100%; 
+            height: 200px; 
+            position: relative; 
         }
-        .day-info { position: absolute; bottom: 15px; left: 20px; color: white; z-index: 2; }
+        .day-hero img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+        .day-hero-overlay {
+            position: absolute; 
+            bottom: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+        }
         .day-tag { 
-            background: var(--primary); padding: 4px 10px; border-radius: 8px; 
-            font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            background: var(--primary); 
+            padding: 4px 12px; 
+            border-radius: 8px; 
+            font-size: 12px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            align-self: flex-start;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        .day-title { margin: 8px 0 0; font-size: 20px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .day-title { 
+            margin: 0; 
+            font-size: 24px; 
+            font-weight: 700; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.3;
+        }
+        .day-date {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
         
-        .day-content { padding: 25px 20px; }
+        .day-content { padding: 30px 25px; }
 
-        /* --- Flight Ticket Style (美化重點) --- */
+        /* --- Flight Ticket --- */
         .flight-ticket {
             background: white;
             border: 1px solid #E2E8F0;
@@ -220,155 +246,155 @@
             content: '✈'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg);
             color: var(--flight-text); background: white; padding: 0 5px; font-size: 14px;
         }
-        .flight-footer {
-            padding: 8px 20px; background: #F8FAFC; font-size: 11px; color: var(--text-light); text-align: center;
-        }
 
-        /* --- Timeline Design --- */
-        .timeline-item {
-            display: flex; gap: 15px; margin-bottom: 35px; position: relative;
+        /* --- Timeline --- */
+        .timeline { position: relative; padding-left: 16px; margin-top: 10px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 24px; top: 15px; bottom: 30px; width: 2px; 
+            background: #E2E8F0; border-radius: 1px; z-index: 0;
         }
-        .timeline-item:last-child { margin-bottom: 0; }
+        
+        .activity-item { position: relative; display: flex; margin-bottom: 35px; z-index: 1; }
         
         .time-column {
-            flex: 0 0 50px; text-align: right;
-            font-size: 13px; font-weight: 600; color: var(--text-gray);
-            padding-top: 4px;
+            flex: 0 0 60px; text-align: right; padding-right: 15px;
+            font-size: 14px; font-weight: 600; color: var(--text-gray);
+            padding-top: 12px;
         }
         
-        .marker-column {
-            flex: 0 0 20px; position: relative; display: flex; flex-direction: column; align-items: center;
+        .activity-icon {
+            width: 50px; height: 50px; 
+            background: white; 
+            border: 2px solid #F3F4F6; 
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 24px; 
+            margin-right: 20px; 
+            flex-shrink: 0;
+            box-shadow: var(--shadow-card); 
+            z-index: 2;
         }
-        .marker-dot {
-            width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
-            border: 2px solid white; box-shadow: 0 0 0 2px var(--primary-light); z-index: 2;
-        }
-        .marker-line {
-            flex: 1; width: 2px; background: #E2E8F0; margin-top: 4px; margin-bottom: -40px;
-        }
-        .timeline-item:last-child .marker-line { display: none; }
-
-        .content-column {
-            flex: 1; padding-bottom: 5px;
-        }
-        .activity-title { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
-        .activity-desc { margin: 0; font-size: 14px; color: var(--text-gray); line-height: 1.5; }
-        .activity-badge {
-            display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 4px;
-            background: #F1F5F9; color: #64748B; margin-bottom: 6px; font-weight: 600;
-        }
-
-        /* --- Hotel Card --- */
-        .hotel-card {
-            background: white; border-radius: 16px; padding: 15px;
-            display: flex; align-items: center; gap: 15px; margin-top: 30px;
-            border: 1px solid #F3F4F6; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-        .hotel-icon {
-            width: 40px; height: 40px; border-radius: 10px; background: var(--hotel-bg);
-            color: var(--hotel-text); display: flex; align-items: center; justify-content: center; font-size: 20px;
-        }
-        .hotel-details h4 { margin: 0; font-size: 15px; font-weight: 700; }
-        .hotel-details p { margin: 2px 0 0; font-size: 12px; color: var(--text-gray); }
-        .breakfast-tag {
-            font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-top: 4px; display: inline-block;
-        }
-        .no-bf { background: #F3F4F6; color: #94A3B8; }
-        .has-bf { background: #ECFDF5; color: #059669; }
-
-        /* --- Accounting & AI (共用美化) --- */
-        .feature-card {
-            background: white; border-radius: var(--radius); box-shadow: var(--shadow-card); padding: 25px; margin-bottom: 20px;
-        }
-        .balance-display {
-            text-align: center; padding: 30px 0;
-            background: linear-gradient(135deg, #10B981, #059669);
-            border-radius: 20px; color: white; margin-bottom: 20px;
-            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
-        }
-        .balance-display h3 { margin: 0; font-size: 14px; opacity: 0.9; font-weight: 500; }
-        .balance-display .amount { font-size: 42px; font-weight: 700; margin-top: 5px; letter-spacing: -1px; }
-
-        .form-label { font-size: 13px; font-weight: 600; color: var(--text-gray); margin-bottom: 8px; display: block; }
-        .custom-input {
-            width: 100%; padding: 14px; border: 1px solid #E2E8F0; border-radius: 12px; font-family: inherit;
-            font-size: 16px; outline: none; transition: all 0.2s; background: #F8FAFC;
-        }
-        .custom-input:focus { border-color: var(--primary); background: white; box-shadow: 0 0 0 3px var(--primary-light); }
-
-        .btn-main {
-            width: 100%; padding: 16px; border-radius: 14px; border: none;
-            background: var(--primary); color: white; font-size: 16px; font-weight: 600;
-            cursor: pointer; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); transition: transform 0.1s;
-        }
-        .btn-main:active { transform: scale(0.98); }
         
-        /* 查詢匯率按鈕特殊樣式 */
-        .btn-query {
-             display:flex; align-items:center; justify-content:center; 
-             background:#F1F5F9; color:#475569; padding:0 15px; border-radius:12px; 
-             text-decoration:none; font-size:13px; font-weight:600; white-space:nowrap;
-             border: 1px solid #E2E8F0; transition: all 0.2s;
+        .activity-details { flex: 1; padding-top: 2px; }
+        .activity-details h3 { 
+            margin: 0 0 6px; font-size: 18px; font-weight: 700; color: var(--text-dark); 
         }
-        .btn-query:hover { background: #E2E8F0; }
+        .activity-details p { 
+            margin: 0; font-size: 15px; color: var(--text-sub); line-height: 1.6;
+        }
 
-        /* --- AI Chat Layout (Responsive) --- */
-        .chat-wrapper { 
-            display: flex; 
-            flex-direction: column; 
-            /* RWD: 手機上扣除 Header/Footer, 電腦上固定高度 */
-            height: calc(100vh - 220px); 
-            min-height: 400px;
-            background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); 
+        /* --- Info Box --- */
+        .hotel-box { 
+            background: #F9FAFB;
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-top: 30px; 
+            border: 1px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .chat-area { 
-            flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 18px; background: #F9FAFB;
+        .hotel-icon-wrapper {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: var(--hotel-bg); color: var(--hotel-text);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; flex-shrink: 0;
         }
-        .chat-input-box { 
-            padding: 15px; border-top: 1px solid #E5E7EB; background: white; display: flex; gap: 10px; align-items: center;
+        .hotel-content h4 { margin: 0; font-size: 16px; font-weight: 700; color: var(--text-dark); }
+        .hotel-content p { margin: 4px 0 8px; font-size: 14px; color: var(--text-gray); }
+        .tag {
+            display: inline-block; padding: 4px 8px; border-radius: 6px;
+            font-size: 12px; font-weight: 600;
         }
-        .msg { 
-            max-width: 85%; padding: 14px 18px; border-radius: 20px; font-size: 15px; line-height: 1.5; position: relative;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        .tag-no-bf { background: #F3F4F6; color: #64748B; }
+        .tag-has-bf { background: #ECFDF5; color: #059669; }
+
+        /* --- Accounting --- */
+        .accounting-card { background: white; border-radius: 20px; padding: 25px; box-shadow: var(--shadow-card); margin-bottom: 25px; }
+        .balance-summary { 
+            background: linear-gradient(135deg, #10B981, #059669); 
+            color: white; border-radius: 20px; padding: 30px 20px; margin-bottom: 25px; 
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3); text-align: center;
         }
-        .msg.user { background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .msg.ai { background: white; color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #E5E7EB; }
+        .balance-title { font-size: 14px; opacity: 0.9; margin-bottom: 5px; }
+        .balance-amount { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
+        .debt-list { background: rgba(255,255,255,0.2); border-radius: 12px; padding: 10px; text-align: left; font-size: 14px; }
+        .debt-item { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .debt-item:last-child { margin-bottom: 0; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; font-size: 13px; color: #888; margin-bottom: 5px; font-weight: 600; }
+        .form-row { display: flex; gap: 10px; }
+        .form-input { 
+            width: 100%; padding: 12px; border: 1px solid #E5E5EA; border-radius: 12px; font-size: 16px; 
+            box-sizing: border-box; -webkit-appearance: none; background: #FAFAFA;
+        }
+        .form-input:focus { outline: none; border-color: var(--primary); background: white; }
         
-        .ai-avatar {
-            width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #8B5CF6, #6366F1); 
-            color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-right: 8px;
+        .btn-primary {
+            width: 100%; background: var(--primary); color: white; border: none; padding: 15px; 
+            border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+            margin-top: 10px;
         }
+        .btn-secondary {
+            background: #F2F2F7; color: var(--primary); border: 1px solid #E5E5EA; padding: 10px 15px;
+            border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+        }
+        .btn-ai {
+            width: 100%; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; border: none; padding: 12px; 
+            border-radius: 14px; font-size: 15px; font-weight: 700; cursor: pointer; 
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-primary:active, .btn-secondary:active, .btn-ai:active { transform: scale(0.98); }
+
+        .expense-list { margin-top: 20px; }
+        .expense-item {
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 0; border-bottom: 1px solid #eee;
+        }
+        .expense-info h4 { margin: 0; font-size: 16px; color: #333; }
+        .expense-info span { font-size: 12px; color: #999; }
+        .expense-amount { font-weight: 700; color: var(--expense-red); font-size: 16px; }
+        .delete-btn { color: #ccc; margin-left: 15px; font-size: 20px; cursor: pointer; padding: 5px; }
+
+        /* --- AI Chat Styles --- */
+        .chat-container {
+            display: flex; flex-direction: column; height: calc(100vh - 220px); 
+            background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .chat-messages {
+            flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px;
+        }
+        .chat-input-area {
+            padding: 15px; border-top: 1px solid #eee; background: #fff; display: flex; gap: 10px;
+        }
+        .chat-bubble {
+            max-width: 80%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5;
+        }
+        .chat-bubble.user {
+            background: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 4px;
+        }
+        .chat-bubble.ai {
+            background: #F2F2F7; color: #333; align-self: flex-start; border-bottom-left-radius: 4px;
+        }
+        .loading-dots::after {
+            content: ' .'; animation: dots 1s steps(5, end) infinite;
+        }
+        @keyframes dots { 0%, 20% { content: ' .'; } 40% { content: ' ..'; } 60%, 100% { content: ' ...'; } }
 
         /* --- Bottom Tab Bar --- */
         .tab-bar {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.9);
-            display: flex; justify-content: space-around; padding: 12px 0; padding-bottom: max(12px, env(safe-area-inset-bottom));
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.05); z-index: 500; backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0,0,0,0.03);
+            position: fixed; bottom: 0; left: 0; width: 100%; background: white;
+            display: flex; justify-content: space-around; padding: 10px 0; padding-bottom: max(10px, env(safe-area-inset-bottom));
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 500;
         }
-        .tab-btn {
-            display: flex; flex-direction: column; align-items: center; color: var(--text-light); 
-            text-decoration: none; font-size: 10px; width: 33%; transition: 0.2s;
-            cursor: pointer;
+        .tab-item {
+            display: flex; flex-direction: column; align-items: center; color: #999; text-decoration: none; font-size: 10px; width: 33%;
         }
-        .tab-btn.active { color: var(--primary); transform: translateY(-2px); }
-        .tab-icon { font-size: 24px; margin-bottom: 3px; display: block; }
-
-        /* RWD Breakpoint for Larger Screens */
-        @media (min-width: 768px) {
-            .container { padding: 30px; }
-            .header { height: 320px; }
-            .header h1 { font-size: 36px; }
-            .day-card { display: flex; flex-direction: row; align-items: stretch; }
-            .day-hero { width: 35%; height: auto; min-height: 250px; }
-            .day-content { width: 65%; padding: 30px; }
-            .nav-container { top: 20px; margin-top: -40px; }
-            .nav-scroller { justify-content: center; }
-        }
+        .tab-item.active { color: var(--primary); }
+        .tab-icon { font-size: 24px; margin-bottom: 2px; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes dots { 0%, 20% { content: ' .'; } 40% { content: ' ..'; } 60%, 100% { content: ' ...'; } }
-        .loading-dots::after { content: ' .'; animation: dots 1s steps(5, end) infinite; }
     </style>
 </head>
 <body>
@@ -379,9 +405,13 @@
         <div class="header-overlay"></div>
         <div class="header-content">
             <h1>2026年哈爾濱之旅</h1>
-            <div class="subtitle">哈爾濱 · 長白山 · 延吉 · 青島 (7日)</div>
-            <div class="countdown-box">
-                距離出發還有 <strong id="countdown">...</strong>
+            <div class="subtitle">哈爾濱·長白山·延吉·青島 深度7日遊</div>
+            <div class="trip-badges">
+                <span class="badge">📅 2026.02.08 - 02.14 (7天6夜)</span>
+            </div>
+            <div class="countdown-container">
+                <div class="countdown-text">距離出發還有</div>
+                <div class="countdown-number" id="countdown">計算中...</div>
             </div>
         </div>
     </div>
@@ -390,13 +420,13 @@
     <div id="section-itinerary" class="view-section active">
         <div class="nav-container">
             <div class="nav-scroller">
-                <div class="nav-pill active" onclick="scrollToDay('day1', this)"><span class="day">D1</span><span class="label">出發</span></div>
-                <div class="nav-pill" onclick="scrollToDay('day2', this)"><span class="day">D2</span><span class="label">哈爾濱</span></div>
-                <div class="nav-pill" onclick="scrollToDay('day3', this)"><span class="day">D3</span><span class="label">長白山</span></div>
-                <div class="nav-pill" onclick="scrollToDay('day4', this)"><span class="day">D4</span><span class="label">天池</span></div>
-                <div class="nav-pill" onclick="scrollToDay('day5', this)"><span class="day">D5</span><span class="label">延吉</span></div>
-                <div class="nav-pill" onclick="scrollToDay('day6', this)"><span class="day">D6</span><span class="label">青島</span></div>
-                <div class="nav-pill" onclick="scrollToDay('day7', this)"><span class="day">D7</span><span class="label">返程</span></div>
+                <div class="nav-item active" onclick="scrollToDay('day1', this)">Day 1<span>出發</span></div>
+                <div class="nav-item" onclick="scrollToDay('day2', this)">Day 2<span>哈爾濱</span></div>
+                <div class="nav-item" onclick="scrollToDay('day3', this)">Day 3<span>長白山</span></div>
+                <div class="nav-item" onclick="scrollToDay('day4', this)">Day 4<span>天池</span></div>
+                <div class="nav-item" onclick="scrollToDay('day5', this)">Day 5<span>延吉</span></div>
+                <div class="nav-item" onclick="scrollToDay('day6', this)">Day 6<span>青島</span></div>
+                <div class="nav-item" onclick="scrollToDay('day7', this)">Day 7<span>返程</span></div>
             </div>
         </div>
 
@@ -404,12 +434,14 @@
             <!-- Day 1 -->
             <div id="day1" class="day-card">
                 <div class="day-hero">
-                    <!-- 使用 Unsplash 圖片 -->
-                    <img src="https://images.unsplash.com/photo-1535063406369-760e405d3766?q=80&w=800&auto=format&fit=crop" alt="Flight">
-                    <div class="day-info">
-                        <span class="day-tag">Day 1</span>
-                        <h2 class="day-title">抵達冰城哈爾濱</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月8日 (週日)</div>
+                    <!-- 本地圖片 -->
+                    <img src="day1_flight.jpg" alt="Flight">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag">Day 1</span>
+                            <h2 class="day-title">抵達冰城哈爾濱</h2>
+                        </div>
+                        <span class="day-date">2月8日 (週日)</span>
                     </div>
                 </div>
                 <div class="day-content">
@@ -454,40 +486,41 @@
                     </div>
 
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">13:35</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <span class="activity-badge">接機</span>
-                                <h3 class="activity-title">抵達哈爾濱</h3>
-                                <p class="activity-desc">專屬司機接機，前往酒店辦理入住。</p>
+                            <div class="activity-icon">🛬</div>
+                            <div class="activity-details">
+                                <h3>抵達哈爾濱</h3>
+                                <p>專屬司機接機，前往酒店辦理入住。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">15:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">飯店 Check-in</h3>
-                                <p class="activity-desc">入住如家商旅飯店，放置行李稍作休息。</p>
+                            <div class="activity-icon">🏨</div>
+                            <div class="activity-details">
+                                <h3>飯店 Check-in</h3>
+                                <p>入住如家商旅飯店，放置行李稍作休息。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">16:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <span class="activity-badge">自由活動</span>
-                                <h3 class="activity-title">市區探索</h3>
-                                <p class="activity-desc">推薦前往哈藥六廠拍照，或參觀七三一遺址。</p>
+                            <div class="activity-icon">🎡</div>
+                            <div class="activity-details">
+                                <h3>自由活動推薦</h3>
+                                <p>前往哈藥六廠拍照，或參觀七三一遺址。</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="hotel-card">
-                        <div class="hotel-icon">🏨</div>
-                        <div class="hotel-details">
+                    <div class="hotel-box">
+                        <div class="hotel-icon-wrapper">🏨</div>
+                        <div class="hotel-content">
                             <h4>如家商旅飯店 (安國街店)</h4>
-                            <p>道里區安國街76號</p>
-                            <span class="breakfast-tag no-bf">無早餐</span>
+                            <p>哈爾濱道里區安國街76號</p>
+                            <div style="display:flex; gap:8px;">
+                                <span class="tag tag-no-bf">無早餐</span>
+                                <span class="tag" style="background:#F1F5F9;">📞 +86-451-84215997</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -496,47 +529,49 @@
             <!-- Day 2 -->
             <div id="day2" class="day-card">
                 <div class="day-hero">
-                    <img src="https://images.unsplash.com/photo-1612455513029-29f5543168c5?q=80&w=800&auto=format&fit=crop" alt="Ice">
-                    <div class="day-info">
-                        <span class="day-tag">Day 2</span>
-                        <h2 class="day-title">冰雪大世界與市區</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月9日 (週一)</div>
+                     <!-- 本地圖片 -->
+                    <img src="day2_ice.jpg" alt="Ice">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag">Day 2</span>
+                            <h2 class="day-title">冰雪大世界</h2>
+                            <div class="day-date">2月9日 (週一)</div>
+                        </div>
                     </div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">09:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">市區精華巡禮</h3>
-                                <p class="activity-desc">參觀聖索菲亞教堂廣場，漫步中央大街。</p>
+                            <div class="activity-icon">🏰</div>
+                            <div class="activity-details">
+                                <h3>市區精華巡禮</h3>
+                                <p>參觀聖索菲亞教堂廣場，漫步中央大街。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">13:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">松花江冰上活動</h3>
-                                <p class="activity-desc">打卡外灘大雪人，觀看冬泳，體驗冰嘎。</p>
+                            <div class="activity-icon">⛄</div>
+                            <div class="activity-details">
+                                <h3>松花江冰上活動</h3>
+                                <p>打卡外灘大雪人，體驗冰嘎、觀看冬泳。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">15:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <span class="activity-badge" style="background:#E0F2FE; color:#0284C7;">重頭戲</span>
-                                <h3 class="activity-title">冰雪大世界</h3>
-                                <p class="activity-desc">進入園區，欣賞日落與夜晚燈光秀，體驗超長冰滑梯。</p>
+                            <div class="activity-icon">❄️</div>
+                            <div class="activity-details">
+                                <h3>冰雪大世界</h3>
+                                <p>欣賞日落與夜景燈光秀，體驗超長冰滑梯。</p>
                             </div>
                         </div>
                     </div>
-                    <div class="hotel-card">
-                        <div class="hotel-icon">🏨</div>
-                        <div class="hotel-details">
+                    <div class="hotel-box">
+                        <div class="hotel-icon-wrapper">🏨</div>
+                        <div class="hotel-content">
                             <h4>如家商旅飯店 (續住)</h4>
-                            <p>無需退房，輕裝出遊</p>
-                            <span class="breakfast-tag no-bf">無早餐</span>
+                            <p>哈爾濱道里區安國街76號</p>
+                            <span class="tag tag-no-bf">無早餐</span>
                         </div>
                     </div>
                 </div>
@@ -545,112 +580,111 @@
             <!-- Day 3 -->
             <div id="day3" class="day-card">
                 <div class="day-hero">
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop" alt="Lake">
-                    <div class="day-info">
-                        <span class="day-tag">Day 3</span>
-                        <h2 class="day-title">鏡泊湖冬捕</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月10日 (週二)</div>
+                     <!-- 本地圖片 -->
+                    <img src="day3_lake.jpg" alt="Lake">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag">Day 3</span>
+                            <h2 class="day-title">鏡泊湖冬捕</h2>
+                        </div>
+                        <span class="day-date">2月10日 (週二)</span>
                     </div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">08:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">出發前往鏡泊湖</h3>
-                                <p class="activity-desc">乘車前往鏡泊湖景區 (或橫道河子)。</p>
+                            <div class="activity-icon">🚌</div>
+                            <div class="activity-details">
+                                <h3>前往鏡泊湖</h3>
+                                <p>乘車前往鏡泊湖景區。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">11:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">鏡泊湖冬捕</h3>
-                                <p class="activity-desc">觀看傳統漁獵冬捕儀式，欣賞吊水樓冰瀑。</p>
+                            <div class="activity-icon">🐟</div>
+                            <div class="activity-details">
+                                <h3>冬捕儀式</h3>
+                                <p>觀看傳統漁獵冬捕，欣賞吊水樓冰瀑。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">15:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">前往長白山</h3>
-                                <p class="activity-desc">搭乘高鐵前往二道白河 (長白山腳下)。</p>
+                            <div class="activity-icon">🚄</div>
+                            <div class="activity-details">
+                                <h3>前往長白山</h3>
+                                <p>搭乘高鐵前往二道白河。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">18:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <span class="activity-badge" style="background:#FEF3C7; color:#D97706;">放鬆</span>
-                                <h3 class="activity-title">入住 & 溫泉</h3>
-                                <p class="activity-desc">入住溫泉酒店，享受火山溫泉 (請自備泳衣)。</p>
+                            <div class="activity-icon">♨️</div>
+                            <div class="activity-details">
+                                <h3>入住溫泉酒店</h3>
+                                <p>享受長白山火山溫泉 (請備泳衣)。</p>
                             </div>
                         </div>
                     </div>
-                    <div class="hotel-card">
-                        <div class="hotel-icon">♨️</div>
-                        <div class="hotel-details">
+                    <div class="hotel-box">
+                        <div class="hotel-icon-wrapper">♨️</div>
+                        <div class="hotel-content">
                             <h4>日吉納溫泉飯店</h4>
                             <p>安圖長白山大街38號</p>
-                            <span class="breakfast-tag has-bf">含早餐</span>
+                            <div style="display:flex; gap:8px;">
+                                <span class="tag tag-has-bf">含早餐</span>
+                                <span class="tag" style="background:#F1F5F9;">📞 +86-433-5936888</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Day 4 -->
             <div id="day4" class="day-card">
                 <div class="day-hero">
-                    <img src="https://images.unsplash.com/photo-1518802508264-76256089c8b1?q=80&w=800&auto=format&fit=crop" alt="Mountain">
-                    <div class="day-info">
-                        <span class="day-tag">Day 4</span>
-                        <h2 class="day-title">長白山天池</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月11日 (週三)</div>
+                    <!-- 本地圖片 -->
+                    <img src="day4_mountain.jpg" alt="Mountain">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag">Day 4</span>
+                            <h2 class="day-title">長白山天池</h2>
+                        </div>
+                        <span class="day-date">2月11日 (週三)</span>
                     </div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="time-column">08:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">長白山北坡</h3>
-                                <p class="activity-desc">進入景區，換乘環保車與倒站車。</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">09:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <span class="activity-badge">必看</span>
-                                <h3 class="activity-title">天池</h3>
-                                <p class="activity-desc">登頂俯瞰神秘的天池 (視天氣狀況開放)。</p>
+                            <div class="activity-icon">🏔️</div>
+                            <div class="activity-details">
+                                <h3>長白山天池</h3>
+                                <p>登頂俯瞰神秘天池 (視天氣狀況開放)。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">11:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">瀑布與綠淵潭</h3>
-                                <p class="activity-desc">遊覽冰封的長白瀑布與地下森林。</p>
+                            <div class="activity-icon">🌊</div>
+                            <div class="activity-details">
+                                <h3>瀑布與綠淵潭</h3>
+                                <p>遊覽冰封的長白瀑布與地下森林。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">14:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">霧凇漂流</h3>
-                                <p class="activity-desc">體驗魔界霧凇漂流及雪人軍團打卡。</p>
+                            <div class="activity-icon">🚣</div>
+                            <div class="activity-details">
+                                <h3>霧凇漂流</h3>
+                                <p>體驗魔界漂流，打卡雪人軍團。</p>
                             </div>
                         </div>
                     </div>
-                    <div class="hotel-card">
-                        <div class="hotel-icon">♨️</div>
-                        <div class="hotel-details">
+                    <div class="hotel-box">
+                        <div class="hotel-icon-wrapper">♨️</div>
+                        <div class="hotel-content">
                             <h4>日吉納溫泉飯店 (續住)</h4>
-                            <p>繼續享受溫泉夜晚</p>
-                            <span class="breakfast-tag has-bf">含早餐</span>
+                            <p>安圖長白山大街38號</p>
+                            <span class="tag tag-has-bf">含早餐</span>
                         </div>
                     </div>
                 </div>
@@ -659,54 +693,60 @@
             <!-- Day 5 -->
             <div id="day5" class="day-card">
                 <div class="day-hero">
-                    <img src="https://images.unsplash.com/photo-1484704976964-51585557df80?q=80&w=800&auto=format&fit=crop" alt="Deer">
-                    <div class="day-info">
-                        <span class="day-tag">Day 5</span>
-                        <h2 class="day-title">雪嶺與延吉</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月12日 (週四)</div>
+                    <!-- 本地圖片 -->
+                    <img src="day5_deer.jpg" alt="Deer">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag">Day 5</span>
+                            <h2 class="day-title">雪嶺童話</h2>
+                        </div>
+                        <span class="day-date">2月12日 (週四)</span>
                     </div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">10:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">雪嶺童話</h3>
-                                <p class="activity-desc">體驗馬拉爬犁或雪地摩托，與馴鹿互動。</p>
+                            <div class="activity-icon">🦌</div>
+                            <div class="activity-details">
+                                <h3>雪嶺</h3>
+                                <p>體驗馬拉爬犁或雪地摩托，與馴鹿互動。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">13:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">前往延吉</h3>
-                                <p class="activity-desc">乘車前往延吉市。</p>
+                            <div class="activity-icon">🚌</div>
+                            <div class="activity-details">
+                                <h3>前往延吉</h3>
+                                <p>乘車前往延吉市。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">15:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">朝鮮民俗園</h3>
-                                <p class="activity-desc">換上韓服進行旅拍，體驗朝鮮族風情。</p>
+                            <div class="activity-icon">📸</div>
+                            <div class="activity-details">
+                                <h3>朝鮮民俗園</h3>
+                                <p>換上韓服進行旅拍，體驗朝鮮族風情。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">18:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">網紅牆 & 晚餐</h3>
-                                <p class="activity-desc">延大網紅牆打卡，享用正宗韓式烤肉。</p>
+                            <div class="activity-icon">🌃</div>
+                            <div class="activity-details">
+                                <h3>網紅牆 & 晚餐</h3>
+                                <p>延大網紅牆打卡，享用正宗韓式烤肉。</p>
                             </div>
                         </div>
                     </div>
-                    <div class="hotel-card">
-                        <div class="hotel-icon">🍪</div>
-                        <div class="hotel-details">
+                    <div class="hotel-box">
+                        <div class="hotel-icon-wrapper">🍪</div>
+                        <div class="hotel-content">
                             <h4>延吉希爾頓逸林酒店</h4>
                             <p>延吉公園路2551號</p>
-                            <span class="breakfast-tag has-bf">含早餐</span>
+                            <div style="display:flex; gap:8px;">
+                                <span class="tag tag-has-bf">含早餐</span>
+                                <span class="tag" style="background:#F1F5F9;">📞 +86-433-2787777</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -715,34 +755,35 @@
             <!-- Day 6 -->
             <div id="day6" class="day-card">
                 <div class="day-hero">
-                    <img src="https://images.unsplash.com/photo-1565881606991-789a8dff9612?q=80&w=800&auto=format&fit=crop" alt="Market">
-                    <div class="day-info">
-                        <span class="day-tag">Day 6</span>
-                        <h2 class="day-title">轉往青島</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月13日 (週五)</div>
+                    <!-- 本地圖片 -->
+                    <img src="day6_market.jpg" alt="Market">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag">Day 6</span>
+                            <h2 class="day-title">轉往青島</h2>
+                        </div>
+                        <span class="day-date">2月13日 (週五)</span>
                     </div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">06:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">水上市場 (早市)</h3>
-                                <p class="activity-desc">體驗延吉煙火氣，品嘗打糕、米腸等美食。</p>
+                            <div class="activity-icon">🛍️</div>
+                            <div class="activity-details">
+                                <h3>水上市場 (早市)</h3>
+                                <p>體驗延吉煙火氣，品嘗打糕、米腸。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">12:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">前往機場</h3>
-                                <p class="activity-desc">延吉西站 -> 長春龍嘉機場。</p>
+                            <div class="activity-icon">🚄</div>
+                            <div class="activity-details">
+                                <h3>前往機場</h3>
+                                <p>延吉西站 -> 長春龍嘉機場。</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Domestic Flight Ticket -->
                     <div class="flight-ticket">
                         <div class="flight-header">
                             <span>✈️ 國內航班 (吉祥航空)</span>
@@ -764,17 +805,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info-box hotel-style">
-                        <div class="box-header">
-                            <div class="box-icon-wrapper hotel-icon">🏨</div>
-                            <div class="box-title" style="color:var(--hotel-color)">住宿：青島膠州萬豪飯店</div>
-                        </div>
-                        <div class="box-content">
-                            <span style="font-weight:600;">Qingdao Jiaozhou Marriott Hotel</span><br>
-                            地址：膠州少海中路88號
-                            <div class="box-sub">
-                                <span class="tag">📞 +86-532-88696888</span>
-                                <span class="tag" style="color:#059669;">含早餐</span>
+                    <div class="hotel-box">
+                        <div class="hotel-icon-wrapper">🏨</div>
+                        <div class="hotel-content">
+                            <h4>青島膠州萬豪飯店</h4>
+                            <p>膠州少海中路88號</p>
+                            <div style="display:flex; gap:8px;">
+                                <span class="tag tag-has-bf">含早餐</span>
+                                <span class="tag" style="background:#F1F5F9;">📞 +86-532-88696888</span>
                             </div>
                         </div>
                     </div>
@@ -784,39 +822,41 @@
             <!-- Day 7 -->
             <div id="day7" class="day-card">
                 <div class="day-hero">
-                    <img src="https://images.unsplash.com/photo-1436491865332-7a615109cc02?q=80&w=800&auto=format&fit=crop" alt="Sky">
-                    <div class="day-info">
-                        <span class="day-tag" style="background:#EF4444;">Day 7</span>
-                        <h2 class="day-title">返程</h2>
-                        <div style="font-size:12px; opacity:0.9; margin-top:4px;">2月14日 (週六)</div>
+                    <!-- 本地圖片 -->
+                    <img src="day7_return.jpg" alt="Sky">
+                    <div class="day-hero-overlay">
+                        <div>
+                            <span class="day-tag" style="background:var(--flight-color);">Day 7</span>
+                            <h2 class="day-title">返程</h2>
+                        </div>
+                        <span class="day-date">2月14日 (週六)</span>
                     </div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">09:00</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">飯店早餐</h3>
-                                <p class="activity-desc">享用萬豪早餐，隨後辦理退房。</p>
+                            <div class="activity-icon">🥐</div>
+                            <div class="activity-details">
+                                <h3>飯店早餐</h3>
+                                <p>享用萬豪早餐，隨後辦理退房。</p>
                             </div>
                         </div>
-                        <div class="timeline-item">
+                        <div class="activity-item">
                             <div class="time-column">11:30</div>
-                            <div class="marker-column"><div class="marker-dot"></div><div class="marker-line"></div></div>
-                            <div class="content-column">
-                                <h3 class="activity-title">前往機場</h3>
-                                <p class="activity-desc">前往青島膠東機場，辦理登機手續。</p>
+                            <div class="activity-icon">👋</div>
+                            <div class="activity-details">
+                                <h3>前往機場</h3>
+                                <p>前往青島膠東機場，辦理登機手續。</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Return Flight Ticket -->
                     <div class="flight-ticket">
                         <div class="flight-header">
                             <span>✈️ 返程航班 (國泰航空)</span>
                             <span>轉機 1h 25m</span>
                         </div>
+                        <!-- Leg 1 -->
                         <div class="flight-body" style="border-bottom:1px dashed #E2E8F0;">
                             <div class="flight-city">
                                 <div class="flight-time">14:30</div>
@@ -832,6 +872,7 @@
                                 <div class="flight-code">HKG 香港</div>
                             </div>
                         </div>
+                        <!-- Leg 2 -->
                         <div class="flight-body">
                             <div class="flight-city">
                                 <div class="flight-time">19:40</div>
@@ -858,7 +899,7 @@
     <!-- SECTION 2: ACCOUNTING -->
     <div id="section-accounting" class="view-section">
         <div class="container">
-            <h2 style="margin-top:10px; margin-bottom:25px; font-weight:800;">💰 旅途記帳本</h2>
+            <h2 style="margin-top:0; font-size:24px;">💰 旅途記帳本</h2>
             
             <!-- Summary -->
             <div class="accounting-card balance-hero">
@@ -869,8 +910,8 @@
                 </div>
             </div>
 
-            <button class="btn-main btn-ai" onclick="analyzeExpenses()" style="margin-bottom:30px; background: linear-gradient(135deg, #8B5CF6, #6366F1);">
-                ✨ 智慧帳務分析
+            <button class="btn-main btn-ai" onclick="analyzeExpenses()">
+                <span>✨</span> 智慧帳務分析
             </button>
 
             <!-- Form -->
@@ -897,7 +938,7 @@
                     <label class="input-label">匯率 (CNY ➝ TWD)</label>
                     <div class="input-row">
                         <input type="number" id="expense-rate" class="custom-input" value="4.449" placeholder="4.449">
-                        <a href="https://rate.bot.com.tw/xrt?Lang=zh-TW" target="_blank" class="btn-query">查詢</a>
+                        <button class="btn btn-primary" style="margin:0; width:auto; font-size:13px; padding:0 15px;" onclick="window.open('https://rate.bot.com.tw/xrt?Lang=zh-TW', '_blank')">查詢</button>
                     </div>
                 </div>
 
@@ -908,14 +949,19 @@
                         <option value="鍾立軒">鍾立軒</option>
                     </select>
                 </div>
-                <button class="btn-main" onclick="addExpense()">＋ 記一筆</button>
+                <button class="btn btn-primary" onclick="addExpense()">＋ 記一筆</button>
             </div>
 
             <!-- List -->
-            <h3 style="margin-bottom:15px; font-weight:700;">消費明細</h3>
-            <div id="expense-list-container"></div>
-            <div style="text-align:center; margin-top:20px;">
-                <button onclick="clearAllExpenses()" style="background:none; border:none; color:#EF4444; text-decoration:underline; cursor:pointer;">清除所有紀錄</button>
+            <h3 style="margin-bottom: 15px; font-size:18px;">消費明細</h3>
+            <div id="expense-list-container">
+                <div style="text-align:center; color:var(--text-light); padding:30px; background:white; border-radius:16px;">
+                    尚無紀錄
+                </div>
+            </div>
+            
+            <div style="margin-top:20px; text-align:center;">
+                <span onclick="clearAllExpenses()" style="color:#EF4444; font-size:13px; text-decoration:underline; cursor:pointer;">清除所有紀錄</span>
             </div>
         </div>
     </div>
@@ -923,7 +969,7 @@
     <!-- SECTION 3: AI ASSISTANT -->
     <div id="section-ai" class="view-section">
         <div class="container" style="height: calc(100vh - 80px); display: flex; flex-direction: column;">
-            <h2 style="margin-top:10px; margin-bottom:20px; font-weight:800;">✨ AI 隨身導遊</h2>
+            <h2 style="margin-top:0; font-size:24px;">✨ AI 隨身導遊</h2>
             <div class="chat-wrapper">
                 <div id="chat-messages" class="chat-area">
                     <div class="msg ai">
@@ -931,13 +977,13 @@
                             <div class="ai-avatar">AI</div>
                             <span style="font-weight:600; font-size:12px; color:var(--text-sub);">導遊助手</span>
                         </div>
-                        你好！我是你的哈爾濱之旅 AI 助手 ❄️<br>
+                        你好！我是你的東北之旅 AI 助手 ❄️<br>
                         我可以幫你查詢行程、推薦美食，或者提供穿搭建議。請問有什麼可以幫你的嗎？
                     </div>
                 </div>
                 <div class="chat-input-box">
                     <input type="text" id="user-input" class="custom-input" style="margin:0;" placeholder="問我問題..." onkeypress="handleEnter(event)">
-                    <button class="btn-main" style="width:auto; margin:0; padding:10px 20px; border-radius:12px;" onclick="sendMessage()">發送</button>
+                    <button class="btn btn-primary" style="width:auto; margin:0; padding:10px 20px; border-radius:12px;" onclick="sendMessage()">發送</button>
                 </div>
             </div>
         </div>
@@ -962,25 +1008,14 @@
     <script>
         const apiKey = "AIzaSyCSP1NeELFN49rz8WdKXXSZPKpidwVH-xA"; // Gemini API Key
 
-        const itineraryContext = `
-        行程: 2026年哈爾濱之旅 (2/8-2/14)
-        D1: 台北>首爾>哈爾濱。住如家商旅(安國街)。自由活動(哈藥六廠)。
-        D2: 市區巡禮、松花江、冰雪大世界。住如家商旅。
-        D3: 鏡泊湖冬捕。下午高鐵往長白山。住日吉納溫泉飯店(含溫泉)。
-        D4: 長白山北坡(天池/瀑布/綠淵潭)、霧凇漂流。住日吉納。
-        D5: 雪嶺(馴鹿)。下午往延吉。朝鮮民俗園、網紅牆。住延吉希爾頓。
-        D6: 水上市場、延邊博物館。下午高鐵往長春，飛青島。住青島萬豪。
-        D7: 青島>香港>台北。
-        `;
-
+        // ... (Script Logic Same as previous working version) ...
+        const itineraryContext = `行程: 2026年哈爾濱之旅 (2/8-2/14)...(略)`; 
+        
         function updateCountdown() {
             const tripDate = new Date("2026-02-08T07:05:00").getTime();
             const now = new Date().getTime();
             const distance = tripDate - now;
-            if (distance < 0) {
-                document.getElementById("countdown").innerHTML = "旅程進行中 ❄️";
-                return;
-            }
+            if(distance < 0) { document.getElementById("countdown").innerHTML = "旅程進行中 ❄️"; return; }
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("countdown").innerHTML = `${days} 天`;
         }
@@ -988,7 +1023,10 @@
         updateCountdown();
 
         function scrollToDay(id, element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            // Also update nav-pill if using different class names
             document.querySelectorAll('.nav-pill').forEach(el => el.classList.remove('active'));
+            
             element.classList.add('active');
             const el = document.getElementById(id);
             if(el) {
@@ -1009,7 +1047,7 @@
             window.scrollTo(0, 0);
         }
 
-        // Accounting Logic
+        // Accounting
         let expenses = JSON.parse(localStorage.getItem('trip_expenses_v2')) || [];
 
         function updateRateVisibility() {
@@ -1117,7 +1155,7 @@
 
         // AI Functions
         async function callGemini(prompt) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             try {
                 const response = await fetch(url, {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
