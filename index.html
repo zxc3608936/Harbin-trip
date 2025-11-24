@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026年哈爾濱之旅 (最終精修版)</title>
+    <title>2026年哈爾濱之旅 (最終修正版)</title>
     
     <!-- 引入 Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +90,8 @@
             font-size: 14px;
             font-weight: 500;
         }
-        .countdown-box strong { color: #FCD34D; margin-left: 5px; font-size: 18px; }
+        /* 修正倒數計時樣式 */
+        .countdown-box strong { color: #FCD34D; margin-left: 5px; font-size: 18px; font-family: monospace; }
 
         /* --- Navigation (純文字無邊框樣式) --- */
         .nav-container {
@@ -164,7 +165,7 @@
         .view-section { display: none; animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .view-section.active { display: block; }
 
-        /* --- Day Card --- */
+        /* --- Day Card Design --- */
         .day-card {
             background: white;
             border-radius: var(--radius);
@@ -173,6 +174,7 @@
             margin-bottom: 40px;
             scroll-margin-top: 140px;
         }
+        
         .day-hero { 
             width: 100%; 
             height: 200px; 
@@ -221,7 +223,7 @@
         
         .day-content { padding: 30px 25px; }
 
-        /* --- Flight Ticket --- */
+        /* --- Flight Ticket (修正：增加間距避免擋字) --- */
         .flight-ticket {
             background: white;
             border: 1px solid #E2E8F0;
@@ -251,6 +253,8 @@
         .flight-city.arr { text-align: right; }
         .flight-time { font-size: 24px; font-weight: 700; color: var(--text-dark); line-height: 1; }
         .flight-code { font-size: 14px; color: var(--text-gray); font-weight: 500; margin-top: 4px; }
+        
+        /* 修正重點：使用 Flexbox 垂直排列並增加間距 */
         .flight-route { 
             flex: 1; text-align: center; position: relative; padding: 0 15px; 
             display: flex; flex-direction: column; justify-content: center; gap: 8px;
@@ -332,6 +336,7 @@
         .tag-no-bf { background: #F3F4F6; color: #64748B; }
         .tag-has-bf { background: #ECFDF5; color: #059669; }
         
+        /* 導航按鈕樣式 */
         .nav-link {
             display: flex; align-items: center; justify-content: center;
             background: white; border: 1px solid #D1D5DB; color: var(--text-dark);
@@ -475,7 +480,6 @@
             <!-- Day 1 -->
             <div id="day1" class="day-card">
                 <div class="day-hero">
-                    <!-- 使用本地圖片 day1_flight.jpg -->
                     <img src="day1_flight.jpg" alt="Flight">
                     <div class="day-hero-overlay">
                         <div><span class="day-tag">Day 1</span><h2 class="day-title">抵達冰城哈爾濱</h2></div>
@@ -483,7 +487,6 @@
                     </div>
                 </div>
                 <div class="day-content">
-                    <!-- 去程航班 -->
                     <div class="flight-ticket">
                         <div class="flight-header"><span>✈️ 去程航班</span><span>轉機 1h 50m</span></div>
                         <div class="flight-body" style="border-bottom:1px dashed #E2E8F0;">
@@ -566,7 +569,7 @@
                     <div class="timeline">
                         <div class="activity-item"><div class="time-column">10:00</div><div class="activity-icon">🦌</div><div class="activity-details"><h3>雪嶺</h3><p>體驗馬拉爬犁或雪地摩托，與馴鹿互動。</p></div></div>
                         <div class="activity-item"><div class="time-column">13:00</div><div class="activity-icon">🚌</div><div class="activity-details"><h3>前往延吉</h3><p>乘車前往延吉市。</p></div></div>
-                        <div class="activity-item"><div class="time-column">15:30</div><div class="activity-icon">📸</div><div class="activity-details"><h3>朝鮮民俗園</h3><p>換上韓服進行旅拍，體驗朝鮮族風情。</p></div></div>
+                        <div class="activity-item"><div class="time-column">15:30</div><div class="activity-icon">📸</div><div class="activity-details"><h3>朝鮮民俗園</h3><p>換上韓服進行旅拍。</p></div></div>
                         <div class="activity-item"><div class="time-column">18:30</div><div class="activity-icon">🌃</div><div class="activity-details"><h3>網紅牆 & 晚餐</h3><p>延大網紅牆打卡，享用正宗韓式烤肉。</p></div></div>
                     </div>
                     <div class="hotel-box">
@@ -704,8 +707,26 @@
 
         // ... (Itinerary & Countdown logic same as before) ...
         const itineraryContext = `行程: 2026年哈爾濱之旅...`; 
-        function updateCountdown() { /* ... */ }
-        setInterval(updateCountdown, 1000); updateCountdown();
+        function updateCountdown() {
+            const tripDate = new Date("2026-02-08T07:05:00").getTime();
+            const now = new Date().getTime();
+            const distance = tripDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "旅程進行中 ❄️";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days} 天 ${hours} 時 ${minutes} 分 ${seconds} 秒`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
         function scrollToDay(id, element) { /* ... */ }
         function switchTab(tabId, element) {
             document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
